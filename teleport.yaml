@@ -1,0 +1,26 @@
+teleport:
+  nodename: linux-bastion-supervision
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+  auth_servers:
+    - 10.0.0.5:3025
+  connection_limits:
+    max_connections: 15000
+    max_users: 250
+
+auth_service:
+  enabled: "yes"
+
+ssh_service:
+  enabled: "yes"
+
+proxy_service:
+  enabled: "yes"
+  listen_addr: 0.0.0.0:3023
+  web_listen_addr: 10.0.0.5:3080
+  tunnel_listen_addr: 0.0.0.0:3024
+  https_keypairs:
+  - key_file: /home/preston/key.pem
+    cert_file: /home/preston/cert.pem
